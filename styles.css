@@ -1,0 +1,70 @@
+/* Define que todas as caixas de elementos, pseudo-elementos antes e depois, usarão o modelo de box-sizing border-box,
+   que inclui padding e border na largura e altura total dos elementos */
+   *, *::before, *::after {
+    box-sizing: border-box;
+    user-select: none; /* Desativa a seleção de texto do usuário */
+  }
+  
+  /* Estilo para o corpo da página */
+  body {
+    margin: 0; /* Remove as margens padrão do navegador */
+    display: flex; /* Usa flexbox para centrar o conteúdo */
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center; /* Centraliza verticalmente */
+    min-height: 100vh; /* Define altura mínima para a altura da janela de visualização */
+  }
+  
+  /* Estilo para o contêiner do mundo do jogo */
+  .world {
+    overflow: hidden; /* Esconde qualquer conteúdo que ultrapasse os limites do contêiner */
+    position: relative; /* Define a posição relativa para posicionamento dos filhos */
+  }
+  
+  /* Estilo para a pontuação */
+  .score {
+    position: absolute; /* Posicionamento absoluto dentro do contêiner .world */
+    font-size: 3vmin; /* Define o tamanho da fonte em unidades relativas ao menor valor entre largura e altura da viewport */
+    right: 1vmin; /* Posiciona 1vmin da borda direita */
+    top: 1vmin; /* Posiciona 1vmin do topo */
+  }
+  
+  /* Estilo para a tela inicial */
+  .start-screen {
+    position: absolute; /* Posicionamento absoluto dentro do contêiner .world */
+    font-size: 5vmin; /* Define o tamanho da fonte em unidades relativas ao menor valor entre largura e altura da viewport */
+    top: 50%; /* Centraliza verticalmente */
+    left: 50%; /* Centraliza horizontalmente */
+    transform: translate(-50%, -50%); /* Ajusta a posição para realmente centralizar o elemento */
+  }
+  
+  /* Estilo para esconder elementos */
+  .hide {
+    display: none; /* Esconde o elemento */
+  }
+  
+  /* Estilo para o chão do jogo */
+  .ground {
+    --left: 0; /* Propriedade CSS customizada para controle da posição esquerda */
+    position: absolute; /* Posicionamento absoluto dentro do contêiner .world */
+    width: 300%; /* Largura de 300% para criar um efeito de loop */
+    bottom: 0; /* Posiciona no fundo do contêiner */
+    left: calc(var(--left) * 1%); /* Usa a propriedade customizada para ajustar a posição esquerda */
+  }
+  
+  /* Estilo para o dinossauro */
+  .dino {
+    --bottom: 0; /* Propriedade CSS customizada para controle da posição inferior */
+    position: absolute; /* Posicionamento absoluto dentro do contêiner .world */
+    left: 1%; /* Posiciona 1% da borda esquerda */
+    height: 30%; /* Define a altura do dinossauro como 30% da altura do contêiner */
+    bottom: calc(var(--bottom) * 1%); /* Usa a propriedade customizada para ajustar a posição inferior */
+  }
+  
+  /* Estilo para os cactos */
+  .cactus {
+    position: absolute; /* Posicionamento absoluto dentro do contêiner .world */
+    left: calc(var(--left) * 1%); /* Usa a propriedade customizada para ajustar a posição esquerda */
+    height: 30%; /* Define a altura do cacto como 30% da altura do contêiner */
+    bottom: 0; /* Posiciona no fundo do contêiner */
+  }
+  

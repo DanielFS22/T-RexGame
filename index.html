@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="styles.css"> <!-- Link para o arquivo de estilos CSS -->
+  <script src="script.js" type="module"></script> <!-- Link para o script JavaScript, usando type="module" para suporte a módulos ES6 -->
+</head>
+<body>
+  <div class="world" data-world> <!-- Contêiner principal do jogo, com atributo de dados para fácil seleção no JavaScript -->
+    <div class="score" data-score>0</div> <!-- Elemento para exibir a pontuação do jogador -->
+    <div class="start-screen" data-start-screen>Press Any Key To Start</div> <!-- Tela inicial do jogo com mensagem de início -->
+    <img src="imgs/ground.png" class="ground" data-ground> <!-- Imagem do chão do jogo, com atributo de dados para fácil seleção no JavaScript -->
+    <img src="imgs/ground.png" class="ground" data-ground> <!-- Segunda imagem do chão para criar o efeito de loop contínuo -->
+    <img src="imgs/dino-stationary.png" class="dino" data-dino> <!-- Imagem inicial do dinossauro, com atributo de dados para fácil seleção no JavaScript -->
+  </div>
+</body>
+</html>
