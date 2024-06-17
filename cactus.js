@@ -49,7 +49,7 @@ export function getCactusRects() {
 function createCactus() {
   const cactus = document.createElement("img")
   cactus.dataset.cactus = true
-  cactus.src = "imgs/cactus.png" // Fonte da imagem do cacto
+  cactus.src = "imgs/obstaculo.png" // Fonte da imagem do cacto
   cactus.classList.add("cactus")
   setCustomProperty(cactus, "--left", 100) // Define a posição inicial do cacto
   worldElem.append(cactus) // Adiciona o cacto ao mundo do jogo
