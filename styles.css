@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
 /* Define que todas as caixas de elementos, pseudo-elementos antes e depois, usarão o modelo de box-sizing border-box,
    que inclui padding e border na largura e altura total dos elementos */
    *, *::before, *::after {
@@ -14,10 +17,24 @@
     min-height: 100vh; /* Define altura mínima para a altura da janela de visualização */
   }
   
-  /* Estilo para o contêiner do mundo do jogo */
+  @keyframes moveBackground {
+    from {
+      background-position: 0 0;
+    }
+    to { 
+      background-position: -100% 0;
+    }
+  }
+  
   .world {
+    background-image: url(imgs/fundo.png);
     overflow: hidden; /* Esconde qualquer conteúdo que ultrapasse os limites do contêiner */
     position: relative; /* Define a posição relativa para posicionamento dos filhos */
+    width: 100%;
+    height: 100%; /* Ajuste conforme necessário */
+    background-repeat: repeat-x; /* Repete o fundo horizontalmente */
+    animation: moveBackground 20s linear infinite; /* Animação do fundo */
+    background-size: 200% 100%; /* Tamanho do fundo para garantir repetição */
   }
   
   /* Estilo para a pontuação */
@@ -26,10 +43,13 @@
     font-size: 3vmin; /* Define o tamanho da fonte em unidades relativas ao menor valor entre largura e altura da viewport */
     right: 1vmin; /* Posiciona 1vmin da borda direita */
     top: 1vmin; /* Posiciona 1vmin do topo */
+    font-family: "Poppins", sans-serif;
+    font-size: xx-large;
   }
   
   /* Estilo para a tela inicial */
   .start-screen {
+    font-family: 'Courier New', Courier, monospace;
     position: absolute; /* Posicionamento absoluto dentro do contêiner .world */
     font-size: 5vmin; /* Define o tamanho da fonte em unidades relativas ao menor valor entre largura e altura da viewport */
     top: 50%; /* Centraliza verticalmente */
@@ -64,7 +84,7 @@
   .cactus {
     position: absolute; /* Posicionamento absoluto dentro do contêiner .world */
     left: calc(var(--left) * 1%); /* Usa a propriedade customizada para ajustar a posição esquerda */
-    height: 30%; /* Define a altura do cacto como 30% da altura do contêiner */
+    height: 25%; /* Define a altura do cacto como 30% da altura do contêiner */
     bottom: 0; /* Posiciona no fundo do contêiner */
   }
   
