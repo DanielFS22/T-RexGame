@@ -22,7 +22,7 @@
       background-position: 0 0;
     }
     to { 
-      background-position: -100% 0;
+      background-position: -200% 0;
     }
   }
   
@@ -35,6 +35,7 @@
     background-repeat: repeat-x; /* Repete o fundo horizontalmente */
     animation: moveBackground 20s linear infinite; /* Animação do fundo */
     background-size: 200% 100%; /* Tamanho do fundo para garantir repetição */
+    image-rendering: pixelated;
   }
   
   /* Estilo para a pontuação */
