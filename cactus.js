@@ -5,7 +5,7 @@ import {
 } from "./updateCustomProperty.js"
 
 const SPEED = 0.05 // Velocidade do movimento do cacto
-const CACTUS_INTERVAL_MIN = 500 // Intervalo mínimo para a aparição de novos cactos
+const CACTUS_INTERVAL_MIN = 650 // Intervalo mínimo para a aparição de novos cactos
 const CACTUS_INTERVAL_MAX = 2000 // Intervalo máximo para a aparição de novos cactos
 const worldElem = document.querySelector("[data-world]") // Seleciona o elemento que representa o mundo do jogo
 
@@ -47,9 +47,19 @@ export function getCactusRects() {
 
 // Função para criar um novo cacto
 function createCactus() {
+
+  let numeroRandom = parseInt(Math.random() * 3 + 1);
+  let imagem = "";
+  if(numeroRandom === 1){
+    imagem = "_1";
+  } else if(numeroRandom === 2) {
+    imagem = "_2";
+  } else {
+    imagem = "";
+  }
   const cactus = document.createElement("img")
   cactus.dataset.cactus = true
-  cactus.src = "imgs/obstaculo.png" // Fonte da imagem do cacto
+  cactus.src = `imgs/obstaculo${imagem}.png` // Fonte da imagem do cacto
   cactus.classList.add("cactus")
   setCustomProperty(cactus, "--left", 100) // Define a posição inicial do cacto
   worldElem.append(cactus) // Adiciona o cacto ao mundo do jogo
