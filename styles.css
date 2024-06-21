@@ -1,91 +1,120 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden; /* Evita rolagem */
+  width: 100%;
+  height: 100%;
+}
 
+header {
+  width: 100%;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  padding: 1rem;
+  background-color: #f5f5f5;
+  color: white;
+  box-shadow: 2px 2px 4px rgba(4, 4, 4, 0.588);
+}
 
-/* Define que todas as caixas de elementos, pseudo-elementos antes e depois, usarão o modelo de box-sizing border-box,
-   que inclui padding e border na largura e altura total dos elementos */
-   *, *::before, *::after {
-    box-sizing: border-box;
-    user-select: none; /* Desativa a seleção de texto do usuário */
+header img {
+  margin-left: 5%;
+  width: 20%;
+  height: 100%;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+.world {
+  background-image: url(imgs/fundo.png);
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-repeat: repeat-x;
+  animation: moveBackground 20s linear infinite;
+  background-size: 200% 100%;
+  image-rendering: pixelated;
+}
+
+.score-container {
+  position: absolute;
+  top: 1vmin;
+  right: 1vmin;
+  text-align: right;
+}
+
+.score, .high-score {
+  color: #000;
+  font-family: "Poppins", sans-serif;
+  font-size: x-large;
+  padding: 10px;
+  margin-top: 10px;
+  border: 5px #2D0B56;
+  background-color: #f5f5f5;
+  border-radius: 10px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.386);
+}
+
+@keyframes moveBackground {
+  from {
+    background-position: 0 0;
   }
-  
-  /* Estilo para o corpo da página */
-  body {
-    margin: 0; /* Remove as margens padrão do navegador */
-    display: flex; /* Usa flexbox para centrar o conteúdo */
-    justify-content: center; /* Centraliza horizontalmente */
-    align-items: center; /* Centraliza verticalmente */
-    min-height: 100vh; /* Define altura mínima para a altura da janela de visualização */
+  to { 
+    background-position: -200% 0;
   }
-  
-  @keyframes moveBackground {
-    from {
-      background-position: 0 0;
-    }
-    to { 
-      background-position: -200% 0;
-    }
+}
+
+.start-screen {
+  color: #2D0B56;
+  border: 10px   #f5f5f5;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  position: absolute;
+  font-size: 3vmin;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: blink 1s infinite alternate; /* Adiciona a animação de piscar */
+}
+
+@keyframes blink {
+  0% {
+    opacity: 1;
   }
-  
-  .world {
-    background-image: url(imgs/fundo.png);
-    overflow: hidden; /* Esconde qualquer conteúdo que ultrapasse os limites do contêiner */
-    position: relative; /* Define a posição relativa para posicionamento dos filhos */
-    width: 100%;
-    height: 100%; /* Ajuste conforme necessário */
-    background-repeat: repeat-x; /* Repete o fundo horizontalmente */
-    animation: moveBackground 20s linear infinite; /* Animação do fundo */
-    background-size: 200% 100%; /* Tamanho do fundo para garantir repetição */
-    image-rendering: pixelated;
+  100% {
+    opacity: 0.3;
   }
-  
-  /* Estilo para a pontuação */
-  .score {
-    position: absolute; /* Posicionamento absoluto dentro do contêiner .world */
-    font-size: 3vmin; /* Define o tamanho da fonte em unidades relativas ao menor valor entre largura e altura da viewport */
-    right: 1vmin; /* Posiciona 1vmin da borda direita */
-    top: 1vmin; /* Posiciona 1vmin do topo */
-    font-family: "Poppins", sans-serif;
-    font-size: xx-large;
-  }
-  
-  /* Estilo para a tela inicial */
-  .start-screen {
-    font-family: 'Courier New', Courier, monospace;
-    position: absolute; /* Posicionamento absoluto dentro do contêiner .world */
-    font-size: 5vmin; /* Define o tamanho da fonte em unidades relativas ao menor valor entre largura e altura da viewport */
-    top: 50%; /* Centraliza verticalmente */
-    left: 50%; /* Centraliza horizontalmente */
-    transform: translate(-50%, -50%); /* Ajusta a posição para realmente centralizar o elemento */
-  }
-  
-  /* Estilo para esconder elementos */
-  .hide {
-    display: none; /* Esconde o elemento */
-  }
-  
-  /* Estilo para o chão do jogo */
-  .ground {
-    --left: 0; /* Propriedade CSS customizada para controle da posição esquerda */
-    position: absolute; /* Posicionamento absoluto dentro do contêiner .world */
-    width: 300%; /* Largura de 300% para criar um efeito de loop */
-    bottom: 0; /* Posiciona no fundo do contêiner */
-    left: calc(var(--left) * 1%); /* Usa a propriedade customizada para ajustar a posição esquerda */
-  }
-  
-  /* Estilo para o dinossauro */
-  .dino {
-    --bottom: 0; /* Propriedade CSS customizada para controle da posição inferior */
-    position: absolute; /* Posicionamento absoluto dentro do contêiner .world */
-    left: 1%; /* Posiciona 1% da borda esquerda */
-    height: 30%; /* Define a altura do dinossauro como 30% da altura do contêiner */
-    bottom: calc(var(--bottom) * 1%); /* Usa a propriedade customizada para ajustar a posição inferior */
-  }
-  
-  /* Estilo para os cactos */
-  .cactus {
-    position: absolute; /* Posicionamento absoluto dentro do contêiner .world */
-    left: calc(var(--left) * 1%); /* Usa a propriedade customizada para ajustar a posição esquerda */
-    height: 25%; /* Define a altura do cacto como 30% da altura do contêiner */
-    bottom: 0; /* Posiciona no fundo do contêiner */
-  }
-  
+}
+
+.hide {
+  display: none;
+}
+
+.ground {
+  --left: 0;
+  position: absolute;
+  width: 300%;
+  bottom: 0;
+  left: calc(var(--left) * 1%);
+}
+
+.dino {
+  --bottom: 0;
+  position: absolute;
+  left: 1%;
+  height: 30%;
+  bottom: calc(var(--bottom) * 1%);
+}
+
+.cactus {
+  position: absolute;
+  left: calc(var(--left) * 1%);
+  height: 25%;
+  bottom: 0;
+}
